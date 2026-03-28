@@ -428,7 +428,7 @@ We briefly explored Sikulix as an alternative GUI testing tool and compared it w
 
 | Aspect | Selenium IDE | Sikulix |
 |--------|-------------|---------|
-| Element identification | Uses DOM-based locators (ID, CSS, XPath) | Uses image recognition — does not rely on DOM |
+| Element identification | Uses DOM-based locators (ID, CSS, XPath) | Uses image recognition, does not rely on DOM |
 | Ease of setup | Browser extension, easy to install | Requires Java and separate IDE setup |
 | Handling dynamic elements | Struggles with JavaScript-rendered elements; manual target ID fixes needed | Less affected by dynamic DOM since it works on visual screenshots |
 | Script portability | Scripts tied to browser and DOM structure | Scripts tied to screen resolution and visual appearance |
