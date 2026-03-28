@@ -16,9 +16,9 @@
 
 This report covers two parts of Assignment 4 for SENG 637.
 
-**Part 1 — Mutation Testing:** We used Pitest (PIT Mutation Testing) to assess the effectiveness of our test suites developed in Assignment 3 for the JFreeChart library. Mutation testing works by automatically introducing small faults (mutants) into the source code and checking whether our existing tests can detect (kill) them. This gives a more meaningful measure of test suite quality than code coverage alone. We ran mutation tests on both `RangeTest` and `DataUtilitiesTest`, analyzed the results, identified equivalent mutants, and added new test cases to improve the mutation score by at least 10% for each class.
+**Part 1 : Mutation Testing:** We used Pitest (PIT Mutation Testing) to assess the effectiveness of our test suites developed in Assignment 3 for the JFreeChart library. Mutation testing works by automatically introducing small faults (mutants) into the source code and checking whether our existing tests can detect (kill) them. This gives a more meaningful measure of test suite quality than code coverage alone. We ran mutation tests on both `RangeTest` and `DataUtilitiesTest`, analyzed the results, identified equivalent mutants, and added new test cases to improve the mutation score by at least 10% for each class.
 
-**Part 2 — GUI Testing:** We used Selenium IDE to automate GUI tests for the Air Canada website (https://www.aircanada.com). We designed and recorded test cases covering four functionalities: flight search, form validation, flight status check, and manage booking. We also explored Sikulix as an alternative tool and compared it with Selenium IDE.
+**Part 2 : GUI Testing:** We used Selenium IDE to automate GUI tests for the Air Canada website (https://www.aircanada.com). We designed and recorded test cases covering four functionalities: flight search, form validation, flight status check, and manage booking. We also explored Sikulix as an alternative tool and compared it with Selenium IDE.
 
 ---
 
@@ -98,7 +98,7 @@ public void intersectsWhenTouchingAtUpperBound() {
 
 | # | Mutant Description | Mutation Operator | Method | Line | Status | Why Killed / Why Survived |
 |---|-------------------|-------------------|--------|------|--------|--------------------------|
-| 1 | Changed `lower > upper` to `lower >= upper` in constructor | CONDITIONALS_BOUNDARY | `Range()` | 90 | KILLED | `test_getLowerBound_EqualBounds` creates `Range(5.0, 5.0)` — equal bounds are valid, so flipping to `>=` throws an exception, killing the mutant. |
+| 1 | Changed `lower > upper` to `lower >= upper` in the constructor | CONDITIONALS_BOUNDARY | `Range()` | 90 | KILLED | `test_getLowerBound_EqualBounds` creates `Range(5.0, 5.0)` — equal bounds are valid, so flipping to `>=` throws an exception, killing the mutant. |
 | 2 | Replaced `return this.lower` with `return 0.0d` | PRIMITIVE_RETURNS | `getLowerBound()` | 110 | KILLED | Multiple tests assert a specific non-zero lower bound (e.g., `-10.0`), so returning `0.0` immediately fails these assertions. |
 | 3 | Replaced `this.upper - this.lower` with `this.upper + this.lower` | MATH | `getLength()` | 138 | KILLED | `test_getLength_BothPositive` expects `3.0` for `Range(2.0, 5.0)`; addition gives `7.0`, which does not match. |
 | 4 | Replaced `boolean return with true` in `contains()` at redundant check on line 165 | TRUE_RETURNS | `contains()` | 165 | SURVIVED | The redundant final return `(value >= lower && value <= upper)` is unreachable after the two early-return guards. Returning `true` instead never affects any test because no test reaches this line with a value outside the range at this point. |
@@ -168,13 +168,13 @@ We identified equivalent mutants by inspecting the Pitest HTML mutation report f
 - Does not require running additional tests; purely based on code reasoning
 
 **Disadvantages of the approach:**
-- Time-consuming — each survived mutant must be manually inspected
+- Time-consuming — each surviving mutant must be manually inspected
 - Requires deep understanding of the method's semantics and control flow
 - Not automatable at scale; equivalent mutant detection remains an open research problem
 
 **Assumptions:**
-- The original source code is correct and behaves as documented
-- We have full understanding of each method's intended semantics and preconditions
+- The source code is correct and behaves as documented
+- We have a full understanding of each method's intended semantics and preconditions
 
 ### Equivalent Mutants Found
 
@@ -354,15 +354,15 @@ Each student automated at least 2 different functionalities. The functionalities
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
-| TC-06 | Check flight status with valid route | 1. Navigate to flight status section 2. Enter origin 3. Enter destination 4. Select date 5. Click search | Origin: Calgary, Destination: Toronto, Date: Current or future date | Flight status results displayed | Status results page loads; flight details displayed | |
-| TC-07 | Validation triggered when inputs missing | 1. Navigate to flight status section 2. Leave required fields empty 3. Click search | None (all fields empty) | Validation message appears and search blocked | Error message displayed; no results shown | |
+| TC-06 | Check flight status with a valid route | 1. Navigate to the flight status section 2. Enter origin 3. Enter destination 4. Select date 5. Click search | Origin: Calgary, Destination: Toronto, Date: Current or future date | Flight status results displayed | Status results page loads; flight details displayed | |
+| TC-07 | Validation triggered when inputs missing | 1. Navigate to the flight status section 2. Leave required fields empty 3. Click search | None (all fields empty) | Validation message appears and search blocked | Error message displayed; no results shown | |
 
 #### Functionality 2: Manage Booking
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
 | TC-08 | Error shown for invalid booking reference | 1. Navigate to My Bookings 2. Enter invalid booking reference 3. Enter last name 4. Click search | Booking Reference: ABC123, Last Name: Test | Error message displayed; booking not found | Error message displayed; no booking details shown | |
-| TC-09 | Validation triggered when booking fields missing | 1. Navigate to My Bookings 2. Leave booking reference empty 3. Leave last name empty 4. Click search | Booking Reference: (empty), Last Name: (empty) | Validation message appears; cannot proceed | Error message displayed; no navigation to booking details | |
+| TC-09 | Validation triggered when booking fields are missing | 1. Navigate to My Bookings 2. Leave booking reference empty 3. Leave last name empty 4. Click search | Booking Reference: (empty), Last Name: (empty) | Validation message appears; cannot proceed | Error message displayed; no navigation to booking details | |
 
 ---
 
@@ -374,15 +374,15 @@ Each student automated at least 2 different functionalities. The functionalities
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
-| TC-06 | Check flight status with valid route | 1. Navigate to flight status section 2. Enter origin 3. Enter destination 4. Select date 5. Click search | Origin: Vancouver, Destination: Toronto, Date: Current or future date | Flight status results displayed | Status results page loads; flight details displayed | |
-| TC-07 | Validation triggered when inputs missing | 1. Navigate to flight status section 2. Leave required fields empty 3. Click search | None (all fields empty) | Validation message appears | Error message displayed; no results shown | |
+| TC-06 | Check flight status with a valid route | 1. Navigate to the flight status section 2. Enter origin 3. Enter destination 4. Select date 5. Click search | Origin: Vancouver, Destination: Toronto, Date: Current or future date | Flight status results displayed | Status results page loads; flight details displayed | |
+| TC-07 | Validation triggered when inputs missing | 1. Navigate to the flight status section 2. Leave required fields empty 3. Click search | None (all fields empty) | Validation message appears | Error message displayed; no results shown | |
 
 #### Functionality 2: Manage Booking
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
 | TC-08 | Error shown for invalid booking reference | 1. Navigate to My Bookings 2. Enter invalid booking reference 3. Enter last name 4. Click search | Booking Reference: XYZ999, Last Name: Smith | Error message displayed | Error message displayed; no booking details shown | |
-| TC-09 | Validation triggered when booking fields missing | 1. Navigate to My Bookings 2. Leave fields empty 3. Click search | Booking Reference: (empty), Last Name: (partial) | Validation message appears | Error message displayed; stays on booking form | |
+| TC-09 | Validation triggered when booking fields are missing | 1. Navigate to My Bookings 2. Leave fields empty 3. Click search | Booking Reference: (empty), Last Name: (partial) | Validation message appears | Error message displayed; stays on booking form | |
 
 ---
 
@@ -480,7 +480,7 @@ All four members contributed equally to the report. Each section was written by 
 
 ### Challenges Overcome
 
-- The failing `RangeTest` was fixed by carefully reading the `intersects` Javadoc and understanding that touching at the boundary does not count as intersection.
+- The failing `RangeTest` was fixed by carefully reading the `intersects` Javadoc and understanding that touching at the boundary does not count as an intersection.
 - Selenium element issues were resolved by inspecting the page DOM manually and hardcoding stable locators into the scripts.
 
 ### Lessons Learned
