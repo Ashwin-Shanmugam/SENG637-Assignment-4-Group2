@@ -111,7 +111,7 @@ public void intersectsWhenTouchingAtUpperBound() {
 
 > **Screenshot of Pitest mutation report (Range class):**
 >
-> ![Pitest mutation report - Range](./media/pitest-range-original.png)
+> ![Pitest mutation report - Range](./media/pitest-range-original.png/png)
 
 ---
 
@@ -130,7 +130,7 @@ public void intersectsWhenTouchingAtUpperBound() {
 
 > **Screenshot — Final Results (both classes combined):**
 >
-> ![Pitest final summary](./media/pitest-updated-summary.png)
+> ![Pitest final summary](./media/pitest-updated-summary.png.png)
 
 ### RangeTest.java — Updated Results
 
@@ -145,7 +145,7 @@ public void intersectsWhenTouchingAtUpperBound() {
 
 > **Screenshot — Final Results (both classes combined):**
 >
-> ![Pitest final summary](./media/pitest-updated-summary.png)
+> ![Pitest final summary](./media/pitest-updated-summary.png.png)
 
 ---
 
@@ -323,8 +323,8 @@ Each student automated at least 2 different functionalities. The functionalities
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
-| TC-04 | System prevents search when destination is missing | 1. Open homepage 2. Enter origin only 3. Select departure date 4. Click search | Origin: Calgary, Destination: (empty) | Validation message appears and search is blocked | Error message displayed; page does not navigate to results | |
-| TC-05 | System prevents search when origin is missing | 1. Open homepage 2. Enter destination only 3. Select departure date 4. Click search | Destination: Toronto, Origin: (empty) | Validation message appears and search is blocked | Error message displayed; page remains on search form | |
+| TC-04 | System prevents search when destination is missing | 1. Open homepage 2. Enter origin only 3. Select departure date 4. Click search | Origin: Calgary, Destination: (empty) | Validation message appears and search is blocked | Error message displayed; page does not navigate to results | Pass |
+| TC-05 | System prevents search when origin is missing | 1. Open homepage 2. Enter destination only 3. Select departure date 4. Click search | Destination: Toronto, Origin: (empty) | Validation message appears and search is blocked | Error message displayed; page remains on search form | Pass |
 
 ---
 
@@ -343,8 +343,8 @@ Each student automated at least 2 different functionalities. The functionalities
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
-| TC-04 | Missing destination validation | 1. Open homepage 2. Enter origin only 3. Select date 4. Click search | Origin: Vancouver, Destination: (empty) | Validation error shown | Error message displayed; no navigation to results | |
-| TC-05 | Missing origin validation | 1. Open homepage 2. Enter destination only 3. Select date 4. Click search | Destination: Montreal, Origin: (empty) | Validation error shown | Error message displayed; stays on search form | |
+| TC-04 | Missing destination validation | 1. Open homepage 2. Enter origin only 3. Select date 4. Click search | Origin: Vancouver, Destination: (empty) | Validation error shown | Error message displayed; no navigation to results | Pass |
+| TC-05 | Missing origin validation | 1. Open homepage 2. Enter destination only 3. Select date 4. Click search | Destination: Montreal, Origin: (empty) | Validation error shown | Error message displayed; stays on search form | Pass |
 
 ---
 
@@ -354,15 +354,15 @@ Each student automated at least 2 different functionalities. The functionalities
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
-| TC-06 | Check flight status with a valid route | 1. Navigate to the flight status section 2. Enter origin 3. Enter destination 4. Select date 5. Click search | Origin: Calgary, Destination: Toronto, Date: Current or future date | Flight status results displayed | Status results page loads; flight details displayed | |
-| TC-07 | Validation triggered when inputs missing | 1. Navigate to the flight status section 2. Leave required fields empty 3. Click search | None (all fields empty) | Validation message appears and search blocked | Error message displayed; no results shown | |
+| TC-06 | Check flight status with a valid route | 1. Navigate to the flight status section 2. Enter origin 3. Enter destination 4. Select date 5. Click search | Origin: Calgary, Destination: Toronto, Date: Current or future date | Flight status results displayed | Status results page loads; flight details displayed | Pass |
+| TC-07 | Validation triggered when inputs missing | 1. Navigate to the flight status section 2. Leave required fields empty 3. Click search | None (all fields empty) | Validation message appears and search blocked | Error message displayed; no results shown | Pass |
 
 #### Functionality 2: Manage Booking
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
-| TC-08 | Error shown for invalid booking reference | 1. Navigate to My Bookings 2. Enter invalid booking reference 3. Enter last name 4. Click search | Booking Reference: ABC123, Last Name: Test | Error message displayed; booking not found | Error message displayed; no booking details shown | |
-| TC-09 | Validation triggered when booking fields are missing | 1. Navigate to My Bookings 2. Leave booking reference empty 3. Leave last name empty 4. Click search | Booking Reference: (empty), Last Name: (empty) | Validation message appears; cannot proceed | Error message displayed; no navigation to booking details | |
+| TC-08 | Error shown for invalid booking reference | 1. Navigate to My Bookings 2. Enter invalid booking reference 3. Enter last name 4. Click search | Booking Reference: ABC123, Last Name: Test | Error message displayed; booking not found | Error message displayed; no booking details shown | Pass |
+| TC-09 | Validation triggered when booking fields are missing | 1. Navigate to My Bookings 2. Leave booking reference empty 3. Leave last name empty 4. Click search | Booking Reference: (empty), Last Name: (empty) | Validation message appears; cannot proceed | Error message displayed; no navigation to booking details | Pass |
 
 ---
 
@@ -374,15 +374,15 @@ Each student automated at least 2 different functionalities. The functionalities
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
-| TC-06 | Check flight status with a valid route | 1. Navigate to the flight status section 2. Enter origin 3. Enter destination 4. Select date 5. Click search | Origin: Vancouver, Destination: Toronto, Date: Current or future date | Flight status results displayed | Status results page loads; flight details displayed | |
-| TC-07 | Validation triggered when inputs missing | 1. Navigate to the flight status section 2. Leave required fields empty 3. Click search | None (all fields empty) | Validation message appears | Error message displayed; no results shown | |
+| TC-06 | Check flight status with a valid route | 1. Navigate to the flight status section 2. Enter origin 3. Enter destination 4. Select date 5. Click search | Origin: Vancouver, Destination: Toronto, Date: Current or future date | Flight status results displayed | Status results page loads; flight details displayed | Pass |
+| TC-07 | Validation triggered when inputs missing | 1. Navigate to the flight status section 2. Leave required fields empty 3. Click search | None (all fields empty) | Validation message appears | Error message displayed; no results shown | Pass |
 
 #### Functionality 2: Manage Booking
 
 | TC | Objective | Test Steps | Test Data | Expected Result | Verification Point | Pass/Fail |
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
-| TC-08 | Error shown for invalid booking reference | 1. Navigate to My Bookings 2. Enter invalid booking reference 3. Enter last name 4. Click search | Booking Reference: XYZ999, Last Name: Smith | Error message displayed | Error message displayed; no booking details shown | |
-| TC-09 | Validation triggered when booking fields are missing | 1. Navigate to My Bookings 2. Leave fields empty 3. Click search | Booking Reference: (empty), Last Name: (partial) | Validation message appears | Error message displayed; stays on booking form | |
+| TC-08 | Error shown for invalid booking reference | 1. Navigate to My Bookings 2. Enter invalid booking reference 3. Enter last name 4. Click search | Booking Reference: XYZ999, Last Name: Smith | Error message displayed | Error message displayed; no booking details shown | Pass |
+| TC-09 | Validation triggered when booking fields are missing | 1. Navigate to My Bookings 2. Leave fields empty 3. Click search | Booking Reference: (empty), Last Name: (partial) | Validation message appears | Error message displayed; stays on booking form | Pass |
 
 ---
 
@@ -497,7 +497,7 @@ The mutation testing portion of this assignment was well-structured and gave us 
 
 The main difficulty was tooling setup — the Pitclipse Eclipse plugin was unavailable, requiring us to configure a Maven project and run Pitest from the command line. The assignment instructions assumed Eclipse plugin availability, so clearer guidance on the Maven-based fallback workflow would help future groups.
 
-The Selenium portion was straightforward in concept but required significant manual correction of auto-generated locators due to Air Canada's dynamic JavaScript-rendered elements. An introductory note about this common limitation of record-and-replay tools would help set expectations better.
+The Selenium portion was straightforward in concept but required significant manual correction of auto-generated locators due to Air Canada's dynamic JavaScript-rendered elements. An introductory note about this common limitation of record-and-replay tools would help set expectations better. Also, utilizing other popular frameworks such as Playwright testing framework would also help test web applications better.
 
 ---
 
