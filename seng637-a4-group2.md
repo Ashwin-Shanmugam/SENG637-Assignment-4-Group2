@@ -5,10 +5,10 @@
 
 | Name | Student ID |
 |------|------------|
-| Jasneet Singh |  |
-| Ashwin Shanmugam |  |
-| Noshin |  |
-| Salehin Kazi |  |
+| Jasneet Singh | 30044332 |
+| Ashwin Shanmugam | 30300738 |
+| Noshin Chowdhury | 30112985 |
+| Salehin Kazi | 30270206 |
 
 ---
 
