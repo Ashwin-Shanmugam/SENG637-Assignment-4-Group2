@@ -111,7 +111,7 @@ public void intersectsWhenTouchingAtUpperBound() {
 
 > **Screenshot of Pitest mutation report (Range class):**
 >
-> ![Pitest mutation report - Range](./media/pitest-range-original.png/png)
+> ![Pitest mutation report - Range](./media/pitest-range-original.png.png)
 
 ---
 
