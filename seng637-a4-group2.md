@@ -497,7 +497,7 @@ The mutation testing portion of this assignment was well-structured and gave us 
 
 The main difficulty was tooling setup — the Pitclipse Eclipse plugin was unavailable, requiring us to configure a Maven project and run Pitest from the command line. The assignment instructions assumed Eclipse plugin availability, so clearer guidance on the Maven-based fallback workflow would help future groups.
 
-The Selenium portion was straightforward in concept but required significant manual correction of auto-generated locators due to Air Canada's dynamic JavaScript-rendered elements. An introductory note about this common limitation of record-and-replay tools would help set expectations better.
+The Selenium portion was straightforward in concept but required significant manual correction of auto-generated locators due to Air Canada's dynamic JavaScript-rendered elements. An introductory note about this common limitation of record-and-replay tools would help set expectations better. Also, utilizing other popular frameworks such as Playwright testing framework would also help test web applications better.
 
 ---
 
