@@ -422,16 +422,6 @@ Verification points were added to each Selenium script using `assert` commands t
 | TC-08 | `assertText` on error element | Error message displayed; no booking details shown |
 | TC-09 | `assertText` on error element | Error/validation message displayed; no navigation to booking details |
 
-### Challenge: Dynamic Element Locators on Angular-Based Website
-
-TC-01 and TC-05 produced playback failures during automated execution. Upon investigation, the root cause was identified as Angular's dynamic class and attribute binding — the Air Canada website uses Angular, which regenerates element IDs, CSS classes (e.g., `ng-untouched`, `ng-dirty`), and XPath structures on each page load. Katalon Recorder captures these values at recording time, but they are no longer valid when the test is replayed in a new session.
-
-Both TC-01 (one-way flight search) and TC-05 (missing origin validation) were verified to function correctly through manual testing — flight search results loaded as expected and the validation error message appeared when the origin field was left empty. The failures are therefore attributed to a tool limitation rather than a defect in the application under test.
-
-This is a known limitation of record-and-replay tools when applied to modern JavaScript-rendered websites that rely on dynamic DOM structures. Resolving this would require replacing auto-generated locators with stable, manually defined selectors such as stable element IDs or data attributes that persist across page loads.
-
----
-
 ## 2.6 Comparison: Selenium vs Sikulix
 
 We briefly explored Sikulix as an alternative GUI testing tool and compared it with Selenium IDE.
@@ -451,13 +441,12 @@ We briefly explored Sikulix as an alternative GUI testing tool and compared it w
 
 ## 2.7 Defects Found During GUI Testing
 
-> Note: Given applications are generally stable; it is acceptable to report no defects.
+TC-01 and TC-05 produced playback failures during automated execution. Upon investigation, the root cause was identified as Angular's dynamic class and attribute binding — the Air Canada website uses Angular, which regenerates element IDs, CSS classes (e.g., `ng-untouched`, `ng-dirty`), and XPath structures on each page load. Katalon Recorder captures these values at recording time, but they are no longer valid when the test is replayed in a new session.
 
-| # | Functionality | Description | Steps to Reproduce | Expected | Actual |
-|---|--------------|-------------|--------------------|----------|--------|
-|   |              |             |                    |          |        |
+Both TC-01 (one-way flight search) and TC-05 (missing origin validation) were verified to function correctly through manual testing — flight search results loaded as expected and the validation error message appeared when the origin field was left empty. The failures are therefore attributed to a tool limitation rather than a defect in the application under test.
 
----
+This is a known limitation of record-and-replay tools when applied to modern JavaScript-rendered websites that rely on dynamic DOM structures. Resolving this would require replacing auto-generated locators with stable, manually defined selectors such as stable element IDs or data attributes that persist across page loads.
+
 
 # Part 3: Teamwork
 
