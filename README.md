@@ -3,7 +3,7 @@
 ## Mutation Testing Results
 
 ### Original Pitest Results (79%)
-![Pitest Original Results](./media/pitest-range-original.png)
+![Pitest Original Results](./media/pitest-range-original.png.png)
 
 ### Updated Pitest Results (89%)
-![Pitest Updated Results](./media/pitest-updated-summary.png)
+![Pitest Updated Results](./media/pitest-updated-summary.png.png)
