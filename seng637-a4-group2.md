@@ -424,9 +424,9 @@ Verification points were added to each Selenium script using `assert` commands t
 
 ### Challenge: Dynamic Element Locators on Angular-Based Website
 
-TC-01 and TC-05 produced playback failures during automated execution. Upon investigation, the root cause was identified as Angular's dynamic class and attribute binding — the Air Canada website uses Angular, which regenerates element IDs, CSS classes (e.g., `ng-untouched`, `ng-dirty`), and XPath structures on each page load. Katalon Recorder captures these values at recording time, but they are no longer valid when the test is replayed in a new session.
+TC-01 and TC-05 produced playback failures during automated execution. Upon investigation, the root cause was identified as Angular's dynamic class and attribute binding. The Air Canada website uses Angular, which regenerates element IDs, CSS classes (e.g., `ng-untouched`, `ng-dirty`), and XPath structures on each page load. Katalon Recorder captures these values at recording time, but they are no longer valid when the test is replayed in a new session.
 
-Both TC-01 (one-way flight search) and TC-05 (missing origin validation) were verified to function correctly through manual testing — flight search results loaded as expected and the validation error message appeared when the origin field was left empty. The failures are therefore attributed to a tool limitation rather than a defect in the application under test.
+Both TC-01 (one-way flight search) and TC-05 (missing origin validation) were verified to function correctly through manual testing — flight search results loaded as expected, and the validation error message appeared when the origin field was left empty. The failures are therefore attributed to a tool limitation rather than a defect in the application under test.
 
 This is a known limitation of record-and-replay tools when applied to modern JavaScript-rendered websites that rely on dynamic DOM structures. Resolving this would require replacing auto-generated locators with stable, manually defined selectors such as stable element IDs or data attributes that persist across page loads.
 
@@ -438,7 +438,7 @@ We briefly explored Sikulix as an alternative GUI testing tool and compared it w
 
 | Aspect | Selenium IDE | Sikulix |
 |--------|-------------|---------|
-| Element identification | Uses DOM-based locators (ID, CSS, XPath) | Uses image recognition — does not rely on DOM |
+| Element identification | Uses DOM-based locators (ID, CSS, XPath) | Uses image recognition, does not rely on DOM |
 | Ease of setup | Browser extension, easy to install | Requires Java and separate IDE setup |
 | Handling dynamic elements | Struggles with JavaScript-rendered elements; manual target ID fixes needed | Less affected by dynamic DOM since it works on visual screenshots |
 | Script portability | Scripts tied to browser and DOM structure | Scripts tied to screen resolution and visual appearance |
