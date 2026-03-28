@@ -155,13 +155,13 @@ public void intersectsWhenTouchingAtUpperBound() {
 
 ### Effect on Mutation Score Accuracy
 
-Equivalent mutants are syntactically different from the original program but semantically identical — no test input can distinguish them from the original. They are always counted as "survived" by the mutation tool, artificially inflating the denominator of the mutation score formula (`killed / total`). This makes the mutation score appear lower than it actually is, since the survived equivalent mutants were never killable in the first place. The true mutation score should exclude equivalent mutants, but detecting them requires manual effort.
+Equivalent mutants are syntactically different from the original program but semantically identical — no test input can distinguish them from the original. They are always counted as "survived" by the mutation tool, artificially inflating the denominator of the mutation score formula (`killed / total`). This makes the mutation score appear lower than it actually is, since the surviving equivalent mutants were never killable in the first place. The true mutation score should exclude equivalent mutants, but detecting them requires manual effort.
 
 For example, in `Range.contains()`, a TRUE_RETURNS mutation on the final return statement survives because that line is unreachable dead code — the two preceding `if` guards handle all cases first. In `hashCode()`, arithmetic mutations survive because no test asserts the actual hash value returned.
 
 ### Approach for Detecting Equivalent Mutants
 
-We identified equivalent mutants by inspecting the Pitest HTML mutation report for survived mutants, then reading the mutated code and reasoning about whether any possible test input could produce a different observable output. Specifically, we looked for: dead code (unreachable lines after early returns), mathematical identities (operations whose result is never read), and loop increment patterns where `i++` vs `++i` produce identical behaviour.
+We identified equivalent mutants by inspecting the Pitest HTML mutation report for surviving mutants, then reading the mutated code and reasoning about whether any possible test input could produce a different observable output. Specifically, we looked for: dead code (unreachable lines after early returns), mathematical identities (operations whose result is never read), and loop increment patterns where `i++` vs `++i` produce identical behaviour.
 
 **Benefits of the approach:**
 - Systematic and repeatable — works directly from the Pitest HTML report
@@ -236,7 +236,7 @@ The original `RangeTest` suite from Assignment 3 achieved a mutation coverage of
 
 ### DataUtilitiesTest Effectiveness
 
-The original `DataUtilitiesTest` suite achieved a mutation coverage of **82%** with a test strength of **88%**. The high test strength indicates that when code was reached, assertions were strong and meaningful. The survived mutants were concentrated in null-input paths and boundary conditions in `calculateColumnTotal` and `calculateRowTotal`, where certain row/column index edge cases were not exercised.
+The original `DataUtilitiesTest` suite achieved a mutation coverage of **82%** with a test strength of **88%**. The high test strength indicates that when the code was reached, assertions were strong and meaningful. The surviving mutants were concentrated in null-input paths and boundary conditions in `calculateColumnTotal` and `calculateRowTotal`, where certain row/column index edge cases were not exercised.
 
 ### Comparison
 
@@ -317,7 +317,7 @@ Each student automated at least 2 different functionalities. The functionalities
 |----|-----------|------------|-----------|-----------------|-------------------|-----------|
 | TC-01 | One-way flight search with valid inputs | 1. Open homepage 2. Select one-way 3. Enter origin 4. Enter destination 5. Select departure date 6. Click search | Origin: Calgary, Destination: Toronto, Date: Future date | Search results page displayed with available flights | Results page loads; route and date displayed correctly | Pass|
 | TC-02 | Round-trip flight search with valid inputs | 1. Open homepage 2. Select round-trip 3. Enter origin 4. Enter destination 5. Select departure date 6. Select return date 7. Click search | Origin: Calgary, Destination: Vancouver, Departure: Future date, Return: Later date | Results page with departure and return flights | Results page loads; both departure and return trip details displayed | Pass |
-| TC-03 | Multi-city flight search with valid inputs | 1. Open homepage 2. Select multi-city 3. Enter first route 4. Select first date 5. Enter second route 6. Select second date 7. Click search | Route 1: Calgary→Toronto, Route 2: Toronto→Vancouver, Dates: Future dates | Results page with flight options for both routes | Results page loads; both routes and dates displayed correctly | Pass |
+| TC-03 | Multi-city flight search with valid inputs | 1. Open homepage 2. Select multi-city 3. Enter the first route 4. Select first date 5. Enter the second route 6. Select the second date 7. Click search | Route 1: Calgary→Toronto, Route 2: Toronto→Vancouver, Dates: Future dates | Results page with flight options for both routes | Results page loads; both routes and dates displayed correctly | Pass |
 
 #### Functionality 2: Form Validation (Flight Search)
 
@@ -487,7 +487,7 @@ All four members contributed equally to the report. Each section was written by 
 
 - Mutation testing reveals weaknesses that line coverage alone cannot — a test suite can have high line coverage while still leaving many mutants alive due to weak or missing assertions at boundary conditions.
 - Fixing a failing test before running Pitest is essential; the tool requires a fully passing suite as a baseline, which forces good test hygiene before mutation analysis can begin.
-- Targeted test writing (identifying specific survived mutants and writing tests to kill them) is far more efficient than adding generic tests — a few well-aimed tests improved the score more than many broad ones would have.
+- Targeted test writing (identifying specific surviving mutants and writing tests to kill them) is far more efficient than adding generic tests — a few well-aimed tests improved the score more than many broad ones would have.
 
 ---
 
@@ -495,9 +495,9 @@ All four members contributed equally to the report. Each section was written by 
 
 The mutation testing portion of this assignment was well-structured and gave us a genuinely useful perspective on test quality that we did not get from Assignment 3's coverage metrics. The Pitest HTML report made it straightforward to identify exactly which mutants survived and why, which made targeted improvement feel productive rather than guesswork.
 
-The main difficulty was tooling setup — the Pitclipse Eclipse plugin was unavailable, requiring us to configure a Maven project and run Pitest from the command line. The assignment instructions assumed Eclipse plugin availability, so clearer guidance on the Maven-based fallback workflow would help future groups.
+The main difficulty was tooling setup; the Pitclipse Eclipse plugin was unavailable, requiring us to configure a Maven project and run Pitest from the command line. The assignment instructions assumed Eclipse plugin availability, so clearer guidance on the Maven-based fallback workflow would help future groups.
 
-The Selenium portion was straightforward in concept but required significant manual correction of auto-generated locators due to Air Canada's dynamic JavaScript-rendered elements. An introductory note about this common limitation of record-and-replay tools would help set expectations better. Also, utilizing other popular frameworks such as Playwright testing framework would also help test web applications better.
+The Selenium portion was straightforward in concept but required significant manual correction of auto-generated locators due to Air Canada's dynamic JavaScript-rendered elements. An introductory note about this common limitation of record-and-replay tools would help set expectations better. Also, utilizing other popular frameworks, such as the Playwright testing framework, would also help test web applications better.
 
 ---
 
