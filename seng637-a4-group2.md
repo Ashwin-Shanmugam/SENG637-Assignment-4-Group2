@@ -111,7 +111,7 @@ public void intersectsWhenTouchingAtUpperBound() {
 
 > **Screenshot of Pitest mutation report (Range class):**
 >
-> ![Pitest mutation report - Range](./media/pitest-range-original.png)
+> ![Pitest mutation report - Range](./media/pitest-range-original.png/png)
 
 ---
 
@@ -130,7 +130,7 @@ public void intersectsWhenTouchingAtUpperBound() {
 
 > **Screenshot — Final Results (both classes combined):**
 >
-> ![Pitest final summary](./media/pitest-updated-summary.png)
+> ![Pitest final summary](./media/pitest-updated-summary.png.png)
 
 ### RangeTest.java — Updated Results
 
@@ -145,7 +145,7 @@ public void intersectsWhenTouchingAtUpperBound() {
 
 > **Screenshot — Final Results (both classes combined):**
 >
-> ![Pitest final summary](./media/pitest-updated-summary.png)
+> ![Pitest final summary](./media/pitest-updated-summary.png.png)
 
 ---
 
