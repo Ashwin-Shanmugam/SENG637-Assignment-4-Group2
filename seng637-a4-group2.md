@@ -422,11 +422,13 @@ Verification points were added to each Selenium script using `assert` commands t
 | TC-08 | `assertText` on error element | Error message displayed; no booking details shown |
 | TC-09 | `assertText` on error element | Error/validation message displayed; no navigation to booking details |
 
-### Challenge: Manual Target ID Assignment
+### Challenge: Dynamic Element Locators on Angular-Based Website
 
-Selenium IDE had difficulty automatically identifying certain web elements on the Air Canada website, particularly dynamic elements such as date pickers, dropdown suggestions, and error message containers. In these cases, the auto-generated locators (XPath or CSS selectors) were incorrect or unstable. We resolved this by manually inspecting the page source (browser DevTools) and setting the correct target IDs or CSS selectors directly in the Selenium IDE script.
+TC-01 and TC-05 produced playback failures during automated execution. Upon investigation, the root cause was identified as Angular's dynamic class and attribute binding — the Air Canada website uses Angular, which regenerates element IDs, CSS classes (e.g., `ng-untouched`, `ng-dirty`), and XPath structures on each page load. Katalon Recorder captures these values at recording time, but they are no longer valid when the test is replayed in a new session.
 
-This is a known limitation of record-and-replay tools when applied to modern dynamic websites that rely on JavaScript-rendered content.
+Both TC-01 (one-way flight search) and TC-05 (missing origin validation) were verified to function correctly through manual testing — flight search results loaded as expected and the validation error message appeared when the origin field was left empty. The failures are therefore attributed to a tool limitation rather than a defect in the application under test.
+
+This is a known limitation of record-and-replay tools when applied to modern JavaScript-rendered websites that rely on dynamic DOM structures. Resolving this would require replacing auto-generated locators with stable, manually defined selectors such as stable element IDs or data attributes that persist across page loads.
 
 ---
 
